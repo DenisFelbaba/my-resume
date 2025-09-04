@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import SvgLoader from '@/components/SvgLoader.vue'
 
-const profileImage = ref<string | null>('/public/rsm-img.jpg')
+const profileImage = ref<string | null>('/rsm-img.jpg')
 
 const openCV = () => {
   window.open('/denis_cv_html_pdf.pdf', '_blank', 'width=900,height=1200,scrollbars=yes,resizable=yes')
