@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import SvgLoader from '@/components/SvgLoader.vue'
 
-const profileImage = ref<string | null>('public/rsm-img.JPG')
+const profileImage = ref<string | null>('/public/rsm-img.jpg')
 
 const openCV = () => {
   window.open('/denis_cv_html_pdf.pdf', '_blank', 'width=900,height=1200,scrollbars=yes,resizable=yes')
@@ -27,6 +27,7 @@ const openCV = () => {
                 :src="profileImage"
                 alt="Denis Felbaba"
                 class="profile-image"
+                @error="profileImage = null"
               />
               <span v-else>DF</span>
             </div>
@@ -101,31 +102,31 @@ const openCV = () => {
         <ul class="contacts-list">
           <li>
             <a href="https://t.me/Denis_Mnemonick" class="contact-item" target="_blank">
-              <SvgLoader height="16" width="16" src="/public/svg/icons8-telegram.svg" />
+              <SvgLoader height="16" width="16" src="/svg/icons8-telegram.svg" />
               <span>Telegram: @Denis_Mnemonick</span>
             </a>
           </li>
           <li>
             <a href="https://x.com/DenisMnemonik" class="contact-item" target="_blank">
-              <SvgLoader height="16" width="16" src="/public/svg/icons8-twitter-bird.svg" />
+              <SvgLoader height="16" width="16" src="/svg/icons8-twitter-bird.svg" />
               <span>Twitter: DenisMnemonik</span>
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/denfelson233/" class="contact-item" target="_blank">
-              <SvgLoader height="16" width="16" src="/public/svg/icons8-instagram.svg" />
+              <SvgLoader height="16" width="16" src="/svg/icons8-instagram.svg" />
               <span>Instagram: denfelson233</span>
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/denis-felbaba-27a478175/" class="contact-item" target="_blank">
-              <SvgLoader height="16" width="16" src="/public/svg/icons8-linkedin.svg" />
+              <SvgLoader height="16" width="16" src="/svg/icons8-linkedin.svg" />
               <span>LinkedIn: Denis Felbaba</span>
             </a>
           </li>
           <li>
             <button @click="openCV" class="contact-item">
-               <SvgLoader height="16" width="16" src="/public/svg/icons8-sheet.svg" />
+               <SvgLoader height="16" width="16" src="/svg/icons8-sheet.svg" />
               <span>Denis Felbaba CV</span>
             </button>
           </li>
