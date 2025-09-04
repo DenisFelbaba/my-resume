@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import SvgLoader from '@/components/SvgLoader.vue'
 
-// You can set this to your image URL when you have one
-const profileImage = ref<string | null>(null) // Change to your image URL like: ref('/path/to/your/image.jpg')
+const profileImage = ref<string | null>('public/rsm-img.JPG')
+
+const openCV = () => {
+  window.open('/denis_cv_html_pdf.pdf', '_blank', 'width=900,height=1200,scrollbars=yes,resizable=yes')
+}
 </script>
 
 <template>
@@ -97,33 +101,33 @@ const profileImage = ref<string | null>(null) // Change to your image URL like: 
         <ul class="contacts-list">
           <li>
             <a href="https://t.me/Denis_Mnemonick" class="contact-item" target="_blank">
-              <span>📱</span>
+              <SvgLoader height="16" width="16" src="/public/svg/icons8-telegram.svg" />
               <span>Telegram: @Denis_Mnemonick</span>
             </a>
           </li>
           <li>
             <a href="https://x.com/DenisMnemonik" class="contact-item" target="_blank">
-              <span>🐦</span>
+              <SvgLoader height="16" width="16" src="/public/svg/icons8-twitter-bird.svg" />
               <span>Twitter: DenisMnemonik</span>
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/denfelson233/" class="contact-item" target="_blank">
-              <span>📸</span>
+              <SvgLoader height="16" width="16" src="/public/svg/icons8-instagram.svg" />
               <span>Instagram: denfelson233</span>
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/denis-felbaba-27a478175/" class="contact-item" target="_blank">
-              <span>💼</span>
+              <SvgLoader height="16" width="16" src="/public/svg/icons8-linkedin.svg" />
               <span>LinkedIn: Denis Felbaba</span>
             </a>
           </li>
           <li>
-            <RouterLink to="/cv" class="contact-item">
-              <span>📄</span>
+            <button @click="openCV" class="contact-item">
+               <SvgLoader height="16" width="16" src="/public/svg/icons8-sheet.svg" />
               <span>Denis Felbaba CV</span>
-            </RouterLink>
+            </button>
           </li>
         </ul>
       </section>
