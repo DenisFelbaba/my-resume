@@ -9,10 +9,26 @@
     v-html="svgContent"
   ></svg>
   <div v-else-if="loading" class="svg-loading">
-    Loading...
+    <div class="loading-spinner"></div>
   </div>
-  <div v-else-if="error" class="svg-error">
-    Failed to load SVG
+  <div v-else class="svg-fallback">
+    <svg
+      :width="width"
+      :height="height"
+      :viewBox="`0 0 ${width} ${height}`"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="2"
+        y="2"
+        :width="Number(width) - 4"
+        :height="Number(height) - 4"
+        rx="2"
+        fill="currentColor"
+        opacity="0.6"
+      />
+    </svg>
   </div>
 </template>
 
@@ -46,7 +62,11 @@ const loadSvg = async (src: string) => {
   svgContent.value = ''
 
   try {
-    const response = await fetch(src)
+    const response = await fetch(src, {
+      // Add timeout for slow connections
+      signal: AbortSignal.timeout(5000) // 5 second timeout
+    })
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -63,7 +83,7 @@ const loadSvg = async (src: string) => {
       throw new Error('Invalid SVG format')
     }
   } catch (err) {
-    console.error('Error loading SVG:', err)
+    console.warn('SVG loading failed, showing fallback:', err)
     error.value = true
   } finally {
     loading.value = false
@@ -84,17 +104,30 @@ svg {
   display: inline-block;
 }
 
-.svg-loading, .svg-error {
+.svg-loading, .svg-fallback {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: v-bind(width + 'px');
   height: v-bind(height + 'px');
-  font-size: 12px;
-  color: #666;
 }
 
-.svg-error {
-  color: #e74c3c;
+.svg-fallback {
+  opacity: 0.7;
+}
+
+.loading-spinner {
+  width: calc(v-bind(width + 'px') * 0.6);
+  height: calc(v-bind(height + 'px') * 0.6);
+  border: 2px solid currentColor;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
