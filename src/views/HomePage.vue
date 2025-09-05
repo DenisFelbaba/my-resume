@@ -203,7 +203,10 @@ const contacts = [
 </template>
 
 <style scoped>
-/* Keep your existing container and layout styles */
+.custom-timeline :deep(.n-timeline-item-content__title) {
+  color: var(--text-primary) !important;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -423,7 +426,6 @@ header {
   box-shadow: 0 4px 12px var(--shadow-light);
 }
 
-/* Special styling for CV download button */
 .cv-download {
   margin-top: 8px;
 }
