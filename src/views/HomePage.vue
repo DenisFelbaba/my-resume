@@ -8,7 +8,7 @@ import {
 
 import SvgLoader from '@/components/SvgLoader.vue'
 
-const profileImage = ref<string | null>('/rsm-img.JPG')
+const profileImage = ref<string | null>('/rsm-img-1.jpeg')
 
 const openCV = () => {
   window.open('/denis_cv_html_pdf.pdf', '_blank', 'width=900,height=1200,scrollbars=yes,resizable=yes')
@@ -87,7 +87,6 @@ const contacts = [
     </header>
 
     <main>
-      <!-- Profile Section -->
       <section class="profile-section">
         <div class="profile-header">
           <div class="photo-container">
